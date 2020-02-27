@@ -57,11 +57,17 @@ public class Easy {
     * 如果不存在公共前缀，返回空字符串 ""。
     * 输入：["flower","flow","flight"] ["dog","racecar","car"]
     * 输出："fl" ""
-     * 说明：所有输入只包含小写字母 a-z
+    * 说明：所有输入只包含小写字母 a-z
+    * 算法：取出strs[0]并与后面的字符串依次比较，并每次比较得出一个公共前缀
     * */
     public static String longestCommonPrefix(String[] strs) {
-        String commonStr = "";
-
+        if (strs.length == 0) return "";
+        String commonStr = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            while (strs[i].indexOf(commonStr) != 0) {
+                commonStr = commonStr.substring(0, commonStr.length() - 1);
+            }
+        }
         return commonStr;
     }
 
