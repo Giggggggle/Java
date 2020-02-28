@@ -4,9 +4,12 @@ public class Easy {
     public static void main(String[] args) {
         long a =11241;
         int result = reverse((int)a);
-        boolean isreverse = isPalindrome((int)a);
+        ListNode a1 = null;
+        ListNode b1 = null;
+        ListNode b = mergeTwoLists(a1, b1);
+        System.out.println(b);
         System.out.println(result);
-        System.out.println(isreverse);
+
     }
 
     /*反转整数: 给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
@@ -71,4 +74,44 @@ public class Easy {
         return commonStr;
     }
 
+    /*有效的括号：给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
+    * 输入："()" "()[]{}" "([)]" "{[]}"
+    * 输出：true   true   false  true
+    * 注意：空字符串可被认为是有效字符串。
+    * 算法：
+    * */
+    public static boolean isValid(String s) {
+        return false;
+    }
+
+    /*合并两个有序链表：将两个有序链表合并为一个新的有序链表并返回。
+    * 新链表是通过拼接给定的两个链表的所有节点组成的。
+    * 输入：1->2->4, 1->3->4
+    * 输出：1->1->2->3->4->4
+    * 算法：
+    * */
+    private class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) {
+            val = x;
+        }
+    }
+
+    public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+        if (l1.val < l2.val) {
+            l1.next = mergeTwoLists(l1.next, l2);
+            return l1;
+        }
+        else {
+            l2.next = mergeTwoLists(l1, l2.next);
+            return l2;
+        }
+    }
+
 }
+
+
+
